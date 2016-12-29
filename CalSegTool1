@@ -25,3 +25,4 @@ while [ $i -lt $max ]; do
         echo "MissSeg: $missSeg"
         echo "NormalSeg: $normalSeg"
 done
+#This is second line to add
