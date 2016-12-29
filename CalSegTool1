@@ -1,0 +1,27 @@
+#!/bin/bash
+check=0
+normalSeg=0
+missSeg=0
+i=131888638440000
+max=131888639160000
+expSeg=$((max - i))
+segNo=$((expSeg/360000))
+echo "expSeg $expSeg"
+echo "segNo $segNo"
+while [ $i -lt $max ]; do
+        ls -l  | grep $i | wc
+        u=`ls -l | grep $i | wc -l`
+        if [ "$u" == "$check" ]; then
+                let missSeg+=1
+                echo "u: $u"
+                echo "check: $check"
+        else
+                echo "Continue"
+        fi
+        #echo "output: $i"
+        let i+=360000
+        let normalSeg+=1
+        echo "Current segment : $i"
+        echo "MissSeg: $missSeg"
+        echo "NormalSeg: $normalSeg"
+done
